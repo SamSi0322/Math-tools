@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="eea-cn.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="https://math-tools.sam-si.cn/index.html">Home</a>
+            <a href="https://math-tools.sam-si.cn/index/features.html">Features</a>
+            <a href="#support">Github</a>
+        </div>
+        <h2>对两个整数进行扩展欧几里得算法</h2>
+
+        <form id = "eeaForm" autocomplete="off">
+            <div class="mb-3">
+            <input type ="number" placeholder="输入第一个数" id = "firstInteger_eea" name = "firstInteger_eea"><br>
+            <input type ="number" placeholder="输入第二个数" id = "secondInteger_eea" name = "secondIntger_eea"><br>
+            <div id="numberHelpBlock" class="form-text">
+                请输入非零整数
+              </div>
+            <input type="submit" value="生成" class = "btn btn-primary" title = "点击此处以生成">
+        </form>
+
+        <button onclick = "goToWeb()" class = "btn btn-info" title="百度一下">什么是扩展欧几里得算法</button>
+
+        <button onclick = "goToEnWeb()" class="btn btn-info" title="Translate into English">英文(English)</button>
+
+    <table title = "The Extended_Euclidean_algorithm" id = "eeaTable">
+        <tr>
+            <th scope="col">row</th>
+            <th>x</th>
+            <th>y</th>
+            <th>r</th>
+            <th>q</th>
+        </tr>
+        <tr>
+            <td>row1</td>
+            <td>1</td>
+            <td>0</td>
+            <td id="r1">待输入</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>row2</td>
+            <td>0</td>
+            <td>1</td>
+            <td id="r2">待输入</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+        <script src="eea-cn.js"></script>
+
+        <script>
+            function goToWeb(){
+                window.location.href = 'https://baike.baidu.com/item/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/2029414';
+            }
+            function goToEnWeb(){
+                window.location.href = 'https://math-tools.sam-si.cn/EEA/eea.html';
+            }
+            var form = document.getElementById("eeaForm");
+            form.addEventListener("submit", function(event){
+                event.preventDefault();
+                let strInt1 = document.getElementById("firstInteger_eea").value;
+                let strInt1_abs = strInt1.replaceAll('-', '');
+                let strInt2 = document.getElementById("secondInteger_eea").value;
+                let strInt2_abs = strInt2.replaceAll('-', '');
+                eeaProc(strInt1_abs, strInt2_abs);
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <p id = "extension_1" style="margin: auto; max-width: 70%; text-align: left;"></p>
+        <p id = "extension_2" style="text-align: center;"></p>
+    </body>
+</html>
