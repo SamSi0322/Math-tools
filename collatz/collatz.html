@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="collatz.css">
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M2S3R8CP41"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M2S3R8CP41');
+</script>
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="https://math-tools.sam-si.cn/index.html">Home</a>
+            <a href="https://math-tools.sam-si.cn/features.html">Features</a>
+            <a href="https://github.com/SamSi0322/Math-tools">Github</a>
+        </div>
+        <h2>Collatz conjecture verify</h2>
+
+        <form id="verifyForm" autocomplete="off">
+            <div class="mb-3">
+                <input type="number" placeholder="Type here" id="num" name="num"><br>
+                <div id="numberHelpBlock" class="form-text">
+                    type positive integer to know how it goes to one, up to 15 digits.
+                </div>
+                <input type="submit" value="verify" class="btn btn-primary" title="click to verify">
+        </form>
+        <button class="btn btn-primary" onclick="goToWeb()" title="Go to Encyclopedia">What is Collatz conjecture</button>
+        <button id="lst" class="btn btn-primary" title="Click to get the list of these numbers" style="display: none">Click to get the list of these numbers</button>
+
+        <script src="collatz.js"></script>
+
+        <script>
+            function goToWeb() {
+                window.location.href = 'https://en.wikipedia.org/wiki/Collatz_conjecture';
+            }
+            function lightUp(e) {
+                let element1 = document.getElementById("extension2");
+                element1.style.display = "inline-block";
+                let element2 = document.getElementById("extension2Box");
+                element2.style.display = "inline-block";
+                e.preventDefault();
+
+            }
+            var form = document.getElementById("verifyForm");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+                let strNum = String(document.getElementById("num").value);
+                collatzProc(strNum);
+            })
+            document.getElementById('lst').addEventListener('click', lightUp);
+        </script>
+        <div class="content bottom" style="padding-left: 20%;padding-right: 20%;">
+            <div class="tools">
+                <div class="tool" style="border-style: double;">
+                    <p id="extension" style="margin: auto; max-width: 50%; text-align: center;">The result will be shown there</p>
+                </div>
+                <div id = "extension2Box" class="tool" style="border-style: double; margin-left: auto; display: none;">
+                    <p id="extension2" style="margin: auto; max-width: 50%; text-align: left;"></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
